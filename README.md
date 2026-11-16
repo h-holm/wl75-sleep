@@ -42,6 +42,8 @@ describes the protocol and the measured behaviour of the lamp.
 * A WL75 with software version `V1.39.0518`, the version the protocol was
   documented on.
 * [`uv`][uv-install].
+* Python 3.15 from Homebrew: `brew install python@3.15`. `uv` uses it, and the
+  LaunchAgent is tested with it.
 * Bluetooth permission for your terminal: System Settings → Privacy & Security
   → Bluetooth.
 

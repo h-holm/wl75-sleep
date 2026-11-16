@@ -121,6 +121,8 @@ one connection for a whole run and timestamps every frame.
 | 3-minute run, top-up with 90 seconds left, status every 5 seconds near the end | An audible volume jump at the top-up. Not repeated, cause unknown. |
 | 3-minute run, fade off, nothing sent | Steady volume to the end, then the sound stops at once. |
 | 10-minute run, fade on, status every 20 seconds | Full volume until about 30 seconds before the end, then a smooth fade to silence. The 29 status queries were inaudible. |
+| A full night: a `1F 02` mid-run that lowers the volume by one step | The volume stepped down as intended. |
+| A full night: the last run, 28 minutes with fade on | A smooth fade-out at the end. |
 
 So the scheduler keeps fade on all night and tops up at minute 45 of 60:
 every top-up restarts the countdown long before the fade would begin, and
@@ -151,8 +153,6 @@ Homebrew's Python 3.15, whose `Python.app` has no
 ### Open questions
 
 - Whether the fade lasts 30 seconds for every run length, or scales with it.
-- Whether a `1F 02` sent mid-run, as for the optional volume change, is
-  audible.
 - Whether the lamp advertises less often while Sleep runs.
 - Whether `1E 00` is answered with `EE 01`. It has not been sent.
 
