@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Template for `make install`, which replaces each placeholder between at signs with an absolute path or a number. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>local.wl75-sleep</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>@PYTHON@</string>
+    <string>@REPOSITORY@/src/wl75_sleep/main.py</string>
+    <string>--config-path</string>
+    <string>@CONFIG@</string>
+    <string>--state-path</string>
+    <string>@STATE@</string>
+    <string>--log-file-path</string>
+    <string>@LOG_FILE@</string>
+    <string>--stderr-level</string>
+    <string>warning</string>
+    <string>tick</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>@REPOSITORY@</string>
+  <key>StartInterval</key>
+  <integer>@TICK_SECONDS@</integer>
+  <key>RunAtLoad</key>
+  <true/>
+  <!-- Only warnings, errors and crashes land here. Every tick goes to the rotating log file. -->
+  <key>StandardOutPath</key>
+  <string>@LOG_DIR@/launchd.log</string>
+  <key>StandardErrorPath</key>
+  <string>@LOG_DIR@/launchd.log</string>
+</dict>
+</plist>
