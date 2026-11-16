@@ -1,0 +1,38 @@
+{
+    "cSpell.words": [
+        "asyncio",
+        "behaviour",
+        "beurer",
+        "bleak",
+        "caplog",
+        "docstrings",
+        "editorconfig",
+        "flake8",
+        "github",
+        "git",
+        "gitignore",
+        "isort",
+        "launchd",
+        "llm",
+        "loguru",
+        "plist",
+        "pyproject",
+        "pytest",
+        "ruff",
+        "ty",
+        "typer",
+        "uv",
+    ],
+    "editor.formatOnSave": true,
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
+    "evenBetterToml.formatter.arrayAutoCollapse": false,
+    "python.languageServer": "None",
+}

@@ -1,0 +1,120 @@
+####################
+# Project Metadata #
+####################
+
+[project]
+authors = [{ name = "Henrik Holm", email = "33653878+h-holm@users.noreply.github.com" }]
+classifiers = [
+  "Operating System :: MacOS",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.15",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "bleak==3.1.0",
+  "loguru==0.7.3",
+  "typer==0.28.0",
+]
+description = "Keep the Beurer WL75's Sleep sounds playing all night by topping up its 60-minute timer over BLE."
+keywords = ["beurer", "wl75", "bluetooth", "ble", "bleak", "launchd"]
+license = { file = "LICENSE" }
+name = "wl75-sleep"
+readme = "README.md"
+requires-python = ">=3.15"
+version = "1.0.0"
+
+[project.urls]
+Repository = "https://github.com/h-holm/wl75-sleep"
+
+#####################
+# Dependency Groups #
+#####################
+
+[dependency-groups]
+test = [
+  "pytest==9.2.0",
+  "pytest-asyncio==1.4.0",
+  "pytest-cov==7.1.0",
+]
+lint = [
+  "ruff==0.17.4",
+  "ty==0.0.99",
+  { include-group = "test" },
+]
+pre = [
+  "prek==0.5.10",
+  { include-group = "lint" },
+]
+
+#######################
+# Tool Configurations #
+#######################
+
+[tool.coverage.paths]
+source = ["src/wl75_sleep"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+skip_empty = true
+
+[tool.coverage.run]
+branch = true
+relative_files = true
+source = ["src/wl75_sleep"]
+
+[tool.markdownlint-cli2.config.MD013]
+code_block_line_length = 120
+# The protocol tables hold one fact per row and cannot wrap.
+tables = false
+
+[tool.pytest.ini_options]
+addopts = "--cov=src/wl75_sleep --cov-report=term-missing --cov-fail-under=80"
+asyncio_default_fixture_loop_scope = "function"
+asyncio_mode = "auto"
+minversion = "9.2.0"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+indent-width = 4
+line-length = 120
+target-version = "py315"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "COM812", # "May cause conflicts when used with the formatter".
+  "CPY001", # Requires copyright notices at the top of files.
+  "D203",   # If enabled, this requires one blank line before Class docstrings. Conflicts with D211.
+  "D213",   # Conflicts with D212.
+  "G004",   # Disallows f-strings in logging statements.
+]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.isort]
+known-first-party = ["wl75_sleep"]
+lines-after-imports = 2
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["D104"]
+"tests/**/*" = [
+  # Tests can use magic values, assertions, and relative imports.
+  "PLR2004",
+  "S101",
+  "TID252",
+  # Tests can skip docstrings.
+  "D100",
+  "D103",
+  # Allow boolean-typed positional arguments in test function definitions.
+  "FBT001",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
