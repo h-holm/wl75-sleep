@@ -1,0 +1,16 @@
+# Copy to `config.toml` (gitignored). `wl75 scan` does this for you when it saves the lamp's UUID.
+
+device_uuid = ""            # CoreBluetooth UUID, set by `wl75 scan`
+verified_firmware = ""      # Set at the firmware gate. Writing commands refuse to run without it.
+window_start = "22:00"
+window_end = "07:00"
+sound = "rain"              # off, radio, harmony, relax, instrumental, rain
+volume = 5                  # 1–10
+# Optional: switch to another volume at a set time within the window, until the window ends. Set both or neither.
+# later_volume = 4
+# later_volume_from = "01:00"
+start_light = "off"         # off, sunset, mood, relax
+renew_light = "off"
+renew_after_minutes = 45     # Top up this long after the last successful start or top-up.
+fade_last_segment = true    # Fade out at the end of the night. Sleep runs with fade on all night.
+segment_minutes = 60        # Longest run sent to the lamp, 1–60. Shorter only for tests.
